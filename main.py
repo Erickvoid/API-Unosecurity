@@ -14,7 +14,7 @@ def test():
 
 @app.route('/admin/users/token', methods=['GET'])
 #implementar que solo el master pueda acceder a esta ruta
-def show_songs():
+def show_users():
     all_users = list(db.db.users.find())
     for users in all_users:
        del users ["_id"]
@@ -48,7 +48,7 @@ def add_new_users():
 
 
 @app.route('/api/top_users/update/<int:n_top>',methods=['PUT'])
-def update_songs(n_top):
+def update_users(n_top):
 
     if db.db.users.find_one({'n_top':n_top}):
         db.db.users.update_one({'n_top':n_top},
